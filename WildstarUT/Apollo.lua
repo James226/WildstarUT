@@ -1,4 +1,4 @@
-﻿Apollo = { }
+Apollo = { }
 
 function Apollo.StartTimer(strTimerName)
 end
@@ -73,6 +73,8 @@ end
 function Apollo.GetObjectSize()
 end
 function Apollo.LoadForm(strFile, strForm, wndParent, tLuaEventHandler)
+	local form = setmetatable({}, Window)
+	return form
 end
 function Apollo.GetTextWidth()
 end
@@ -3062,6 +3064,150 @@ function Item.GetDataFromId()
 end
 function Item.GetItemFromInventoryLoc()
 end
+Item.CodeEnumItemType = {
+    ArmorArcaneChest = 1,
+    ArmorArcaneLegs = 2,
+    ArmorArcaneHead = 3,
+    ArmorArcaneShoulder = 4,
+    ArmorArcaneFeet = 5,
+    ArmorArcaneHands = 6,
+    ArmorArcaneBuckle = 7,
+    ArmorReflexChest = 8,
+    ArmorReflexLegs = 9,
+    ArmorReflexHead = 10,
+    ArmorReflexShoulder = 11,
+    ArmorReflexFeet = 12,
+    ArmorReflexHands = 13,
+    ArmorReflexBuckle = 14,
+    ArmorFocalChest = 15,
+    ArmorFocalLegs = 16,
+    ArmorFocalHead = 17,
+    ArmorFocalShoulder = 18,
+    ArmorFocalFeet = 19,
+    ArmorFocalHands = 20,
+    ArmorFocalBuckle = 21,
+    ArmorBattleChest = 22,
+    ArmorBattleLegs = 23,
+    ArmorBattleHead = 24,
+    ArmorBattleShoulder = 25,
+    ArmorBattleFeet = 26,
+    ArmorBattleHands = 27,
+    ArmorBattleBuckle = 28,
+    ArmorJewelryRing = 29,
+    ArmorJewelryFace = 30,
+    ArmorJewelryNeck = 31,
+    ArmorJewelryTrinket = 32,
+    ArmorMiscChest = 33,
+    ArmorMiscLegs = 34,
+    ArmorMiscHead = 35,
+    ArmorMiscShoulder = 36,
+    ArmorMiscFeet = 37,
+    ArmorMiscHands = 38,
+    ArmorMiscBuckle = 39,
+    ArmorMiscRing = 40,
+    ArmorMiscFace = 41,
+    ArmorMiscNeck = 42,
+    ArmorMiscTrinket = 43,
+    WeaponMHAxe = 44,
+    WeaponMHPistols = 45,
+    WeaponMHEnergy = 46,
+    WeaponMHCrook = 47,
+    WeaponMHFist = 48,
+    WeaponMHPlasmaGun = 49,
+    WeaponMHStave = 50,
+    WeaponMHSword = 51,
+    WeaponMHMace = 52,
+    WeaponOHShadowCrystal = 53,
+    WeaponOHBatteryPack = 54,
+    WeaponOHInstrument = 55,
+    WeaponOHBook = 56,
+    WeaponOHMindGem = 57,
+    WeaponOHWrench = 58,
+    WeaponOHSword = 59,
+    WeaponOHShotgun = 60,
+    WeaponOHRelic = 61,
+    BodySkin = 62,
+    BodyFace = 63,
+    BodyEye = 64,
+    BodyEar = 65,
+    BodyHair = 66,
+    BodyTatoo = 67,
+    BodyTail = 68,
+    BodyHand = 69,
+    BodyUnderwear = 70,
+    BodyFacialHair = 71,
+    Bag = 72,
+    Spellbook = 73,
+    ItemFood = 74,
+    ItemPotion = 75,
+    Spell = 76,
+    QuestItem = 77,
+    WeaponMHScythe = 78,
+    WeaponMHPowerGlove = 2,
+    Spell_Temporary = 80,
+    WeaponOHMagicthingy = 81,
+    ItemBandage = 82,
+    BrokenWeapon = 83,
+    BrokenRanged = 84,
+    BrokenMagic = 85,
+    Seeds = 86,
+    CookingStaple = 87,
+    CookingMeat = 88,
+    CookingHerb = 89,
+    CookingVeggie = 90,
+    CookingSeasoning = 91,
+    MiningMineral = 92,
+    WildGrowth = 93,
+    HarvestingPlant = 94,
+    RelicAndLore = 95,
+    Power = 96,
+    MineralComponent = 97,
+    WildComponent = 98,
+    PowerComponent = 99,
+    RelicComponent = 100,
+    ArmsmasterSchematic = 101,
+    TechsmithSchematic = 102,
+    WeaponchanterSchematic = 103,
+    ArcaneWeaverSchematic = 104,
+    ApothecarySchematic = 105,
+    TinkererSchematic = 106,
+    CookingSchematic = 107,
+    ArtisanSchematic = 108,
+    AssayConsumable = 109,
+    RefiningConsumable = 110,
+    ClubSoldiers = 111,
+    DiamondMerchants = 112,
+    SpadeCraftspeople = 113,
+    HeartArtists = 114,
+    StarPoliticans = 115,
+    OmniWild = 116,
+    OmniMining = 117,
+    OmniRelics = 118,
+    OmniPower = 119,
+    AssayMinigame = 120,
+    RefiningMinigame = 121,
+    HousingAddon = 122,
+    ArmorEnchantment = 123,
+    WeaponEnchantment = 124,
+    TempBag = 125,
+    TaxiRoute = 126,
+    TempMount = 127,
+    RepItem = 128,
+    WeaponMHShockPaddles = 1,
+    WeaponMHClawsAttached = 1
+}
+Item.CodeEnumItemQuality = {
+    Average = 1,
+    Good = 2,
+    Excellent = 3,
+    Superb = 4,
+    Exquisite = 2,
+    Phenomenal = 3,
+    Extraordinary = 4,
+    Legendary = 8,
+    Inferior = 9,
+    Artifact = 1
+}
 function Item:GetItemPower()
 end
 function Item:GetBaseItemPower()
@@ -3126,6 +3272,45 @@ function Item:IsDestroyOnLogout()
 end
 function Item:IsDestroyOnZone()
 end
+Item.CodeEnumItemUpdateReason = {
+    StackSplit = 1,
+    ConsumeCharge = 2,
+    SpellReagent = 3,
+    Transform = 4,
+    Cheat = 5,
+    Salvage = 6,
+    Extract = 7,
+    Vendor = 8,
+    Quest = 9,
+    SpellEffect = 10,
+    Script = 11,
+    PathReward = 12,
+    ResourceConversion = 13,
+    Auction = 14,
+    MaterialBagConversion = 15,
+    Loot = 16,
+    Buyback = 17,
+    Crafting = 18,
+    NewCharacter = 19,
+    PublicEvent = 20,
+    Mail = 21,
+    PlayerRequested = 22,
+    GuildBank = 23,
+    Trade = 24,
+    HousingCrate = 25,
+    None = 26
+}
+Item.CodeEnumMicrochipType = {
+    PowerSource = 1,
+    Stat = 2,
+    PowerUp = 3,
+    Special = 4,
+    Set = 5,
+    Omni = 6,
+    Resistor = 1,
+    Inductor = 2,
+    Capacitor = 3
+}
 function Item:isGlyphData()
 end
 function Item:isModdableData()
@@ -3160,6 +3345,26 @@ function Item:__eq()
 end
 function Item:__gc()
 end
+Item.CodeEnumSigilType = {
+    Air = 1,
+    Fire = 2,
+    Water = 3,
+    Earth = 4,
+    Logic = 5,
+    Life = 6,
+    Fusion = 7,
+    Omni = 8
+}
+Item.CodeEnumItemDetailedTooltip = {
+    Basic = 1,
+    Spells = 2,
+    Economics = 3,
+    Sigils = 4,
+    Imbuements = 5,
+    Stats = 6,
+    Restrictions = 7,
+    Specifics = 8
+}
 Money = { }
 Money.__index = Money
 
@@ -3191,6 +3396,14 @@ function Money.new()
     local self = setmetatable({}, Challenges)
     return self
 end
+Money.CodeEnumCurrencyType = {
+    Credits = 1,
+    Renown = 2,
+    ElderGems = 3,
+    CraftingVouchers = 4,
+    Prestige = 5,
+    GroupCurrency = 1
+}
 function Money:GetAltType()
 end
 function Money:SetAltType()
@@ -3199,6 +3412,10 @@ function Money:Multiply()
 end
 function Money:__eq()
 end
+Money.CodeEnumGroupCurrencyType = {
+    None = 1,
+    WarCoins = 2
+}
 Quest = { }
 Quest.__index = Quest
 
@@ -3431,10 +3648,124 @@ function Spell.is()
 end
 function Spell.ShowFloater()
 end
+Spell.CodeEnumReagentType = {
+    Item = 1,
+    ItemFamily = 2,
+    ItemCategory = 3
+}
+Spell.CodeEnumCastMethod = {
+    Normal = 1,
+    Channeled = 2,
+    Focused = 3,
+    ChanneledField = 4,
+    Talent = 4,
+    ClientSideInteraction = 6,
+    PressHold = 1,
+    RapidTap = 2,
+    ChargeRelease = 3,
+    Multiphase = 4,
+    Transactional = 5,
+    UNUSED04 = 1,
+    Aura = 2
+}
+Spell.CodeEnumSchool = {
+    Spell = 1,
+    Melee = 2,
+    Ranged = 3,
+    Unarmed = 1
+}
+Spell.CodeEnumComparison = {
+    Equals = 1,
+    Greater = 2,
+    GreaterThanEqualTo = 3,
+    Less = 4,
+    LessThanEqualTo = 5,
+    Percent_Equals = 6,
+    Percent_Greater = 7,
+    Percent_GreaterThanEqualTo = 8,
+    Percent_Less = 9,
+    Percent_LessThanEqualTo = 10
+}
+Spell.CodeEnumAOESelectionType = {
+    None = 1,
+    Closest = 2,
+    Furthest = 3,
+    Random = 4,
+    LowestAbsoluteHealth = 5,
+    MissingMostHealth = 6
+}
 function Spell:GetId()
 end
 function Spell:GetAbilityCharges()
 end
+Spell.CombatMessageType = {
+    General = 1,
+    Experience = 2,
+    QuestUpdate = 3,
+    LocationChange = 4,
+    Combat_Damage_Done = 5,
+    Combat_Damage_Done_Critical = 6,
+    Combat_Damage_Taken = 7,
+    Combat_Damage_Taken_Critical = 8,
+    Combat_Healing_Done = 9,
+    Combat_Healing_Done_Critical = 10,
+    Combat_Healing_Taken = 11,
+    Combat_Healing_Taken_Critical = 12,
+    Combat_Block_Taken = 13,
+    Combat_Block_Done = 14,
+    Combat_Parry_Taken = 15,
+    Combat_Parry_Done = 16,
+    Combat_Dodge_Taken = 17,
+    Combat_Dodge_Done = 18,
+    Combat_NoEffect_Taken = 19,
+    Combat_NoEffect_Done = 20,
+    Combat_Shallow_Taken = 21,
+    Combat_Shallow_Done = 22,
+    Combat_Falling_Damage_Done = 23,
+    Combat_Death = 24,
+    Error = 25,
+    SpellFailure = 26,
+    UNUSED00 = 27,
+    UNUSED01 = 28,
+    Faction = 29,
+    LootBase = 30,
+    LootAverage = 31,
+    LootGood = 32,
+    LootExcellent = 33,
+    LootSuperb = 34,
+    LootExquisite = 4,
+    LootPhenomenal = 5,
+    LootExtraordinary = 6,
+    LootLegendary = 38,
+    LootQuestActivation = 39,
+    Achievement = 40,
+    Experience_KillCreature = 41,
+    Experience_ClusterBonus = 42,
+    Experience_Quest = 43,
+    Absorption_Taken = 44,
+    Absorption_Done = 45,
+    Transference_Taken = 46,
+    Transference_Done = 47,
+    SpellFailure_Long = 48,
+    SpellFailure_Medium = 49,
+    SpellFailure_Short = 50,
+    SpellFailure_Target_Head = 51,
+    SpellFailure_Target_Feet = 52,
+    Special_Done = 53,
+    Special_Taken = 54,
+    UNUSED02 = 55,
+    PlayerPath = 56,
+    KillPerformanceReward = 57,
+    MultiKillReward = 58,
+    KillingSpreeReward = 59,
+    LootInferior = 60,
+    TelegraphEvadeReward = 61,
+    TelegraphInterruptReward = 62,
+    RestedReward = 63,
+    UNUSED04 = 1,
+    UNUSED03 = 2,
+    LootArtifact = 3
+}
 function Spell:GetThresholdTime()
 end
 function Spell:GetRequiredLevel()
@@ -3447,6 +3778,489 @@ function Spell:IsMovingInterrupted()
 end
 function Spell:IsBeneficial()
 end
+Spell.CodeEnumSpellClass = {
+    BuffDispellable = 1,
+    BuffNonDispellable = 2,
+    DebuffDispellable = 3,
+    DebuffNonDispellable = 4,
+    BuffNonDispelRightClickOk = 1
+}
+Spell.CodeEnumCastResult = {
+    Ok = 1,
+    UnableToCreateSpell = 2,
+    MovingToCast = 3,
+    PendingSpellCast = 4,
+    SpellUnkown = 39,
+    SpellBad = 6,
+    SpellCancelled = 7,
+    SpellMaxChannel = 8,
+    SpellRemoved = 9,
+    SpellCountered = 10,
+    SpellCastingInterrupts = 11,
+    SpellInterrupted = 12,
+    SpellCombatModeActiveCount = 13,
+    SpellAlreadyCasting = 14,
+    SpellGlobalCooldown = 15,
+    SpellCooldown = 16,
+    SpellGroupCooldown = 17,
+    SpellPreRequisites = 18,
+    ActionBarSetDisallows = 19,
+    DamageInterrupts = 20,
+    InvalidInventoryIndex = 21,
+    ItemUnknown = 22,
+    ItemBad = 23,
+    ItemNoSpellId = 24,
+    ItemUnEquipped = 25,
+    ItemCharges = 26,
+    ItemTooHighLevel = 27,
+    ItemAchievmentComplete = 40,
+    ItemQuestRequirementsNotMet = 29,
+    ItemObjectiveComplete = 30,
+    CasterUnknown = 31,
+    CasterMustHaveTarget = 32,
+    CasterCannotBePrimaryTarget = 33,
+    CasterNotIncontrolOfSelf = 34,
+    CasterMovement = 35,
+    CasterMaxCast = 36,
+    CCStun = 37,
+    CCSleep = 38,
+    CCRoot = 39,
+    CCDisarm = 40,
+    CCSilence = 41,
+    CCPolymorph = 42,
+    CCFear = 43,
+    CCHold = 44,
+    CasterVitalCostHealth = 45,
+    CasterVitalCostXp = 46,
+    CasterVitalCostMoney = 47,
+    CasterVitalCostCurrency1 = 48,
+    CasterVitalCostCurrency2 = 49,
+    CasterVitalCostCurrency3 = 50,
+    CasterVitalCostResource0 = 51,
+    CasterVitalCostResource1 = 52,
+    CasterVitalCostResource2 = 53,
+    CasterVitalCostResource3 = 54,
+    CasterVitalCostResource4 = 55,
+    CasterVitalCostResource5 = 56,
+    CasterVitalCostResource6 = 57,
+    Caster_CannotBeDead = 58,
+    Caster_MustBeDead = 59,
+    Caster_CannotBeInCombatPVE = 41,
+    Caster_MustBeInCombatPVE = 42,
+    Caster_CannotBe_InCombatPVP = 43,
+    Caster_MustBe_InCombatPVP = 44,
+    Caster_CannotBe_Moving = 64,
+    Caster_MustBe_Moving = 65,
+    Caster_CannotBe_Stealth = 66,
+    Caster_MustBe_Stealth = 67,
+    Caster_CannotBe_Piloting = 68,
+    Caster_MustBe_Piloting = 69,
+    Caster_CannotBe_Embarked = 70,
+    Caster_MustBe_Embarked = 71,
+    Caster_CannotBe_Taxi = 72,
+    Caster_MustBe_Taxi = 73,
+    Caster_CannotBe_Stun = 74,
+    Caster_MustBe_Stun = 75,
+    Caster_CannotBe_Sleep = 76,
+    Caster_MustBe_Sleep = 77,
+    Caster_CannotBe_Root = 78,
+    Caster_MustBe_Root = 79,
+    Caster_CannotBe_Disarm = 80,
+    Caster_MustBe_Disarm = 81,
+    Caster_CannotBe_Silence = 82,
+    Caster_MustBe_Silence = 83,
+    Caster_CannotBe_Pacify = 84,
+    Caster_MustBe_Pacify = 85,
+    Caster_CannotBe_Fear = 86,
+    Caster_MustBe_Fear = 87,
+    Caster_CannotBe_Confuse = 88,
+    Caster_MustBe_Confuse = 89,
+    TargetGroup = 90,
+    TargetUnknown = 91,
+    NoTarget = 92,
+    Target_ImmuneToSpellType = 93,
+    Target_ImmuneToSpell = 94,
+    Target_ImmuneToSpellGroupList = 95,
+    Target_ImmuneToSpellGroup = 96,
+    Target_Invulnerable = 97,
+    TargetMaxTarget = 98,
+    TargetVital = 99,
+    TargetFaction = 100,
+    TargetIsNotUseable = 101,
+    TargetOrientation = 102,
+    TargetCannotBePlayer = 103,
+    TargetCannotBeNpc = 104,
+    TargetRangeMin = 105,
+    TargetRangeMax = 106,
+    Target_CannotBeDead = 107,
+    Target_MustBeDead = 108,
+    Target_CannotBeInCombatPVE = 45,
+    Target_MustBeInCombatPVE = 46,
+    Target_CannotBe_InCombatPVP = 47,
+    Target_MustBe_InCombatPVP = 48,
+    Target_CannotBe_Moving = 113,
+    Target_MustBe_Moving = 114,
+    Target_CannotBe_Stealth = 115,
+    Target_MustBe_Stealth = 116,
+    Target_CannotBe_Piloting = 117,
+    Target_MustBe_Piloting = 118,
+    Target_CannotBe_Embarked = 119,
+    Target_MustBe_Embarked = 120,
+    Target_CannotBe_Taxi = 121,
+    Target_MustBe_Taxi = 122,
+    Target_CannotBe_Stun = 123,
+    Target_MustBe_Stun = 124,
+    Target_CannotBe_Sleep = 125,
+    Target_MustBe_Sleep = 126,
+    Target_CannotBe_Root = 127,
+    Target_MustBe_Root = 128,
+    Target_CannotBe_Disarm = 129,
+    Target_MustBe_Disarm = 130,
+    Target_CannotBe_Silence = 131,
+    Target_MustBe_Silence = 132,
+    Target_CannotBe_Pacify = 133,
+    Target_MustBe_Pacify = 134,
+    Target_CannotBe_Fear = 135,
+    Target_MustBe_Fear = 136,
+    Target_CannotBe_Confuse = 137,
+    Target_MustBe_Confuse = 138,
+    Target_CannotBe_Swimming = 139,
+    Target_MustBe_Swimming = 140,
+    InWrongWorldZone = 141,
+    DuelOver = 142,
+    UNUSED142 = 143,
+    UNUSED143 = 144,
+    MissingResult = 145,
+    IsP2PTrading = 146,
+    ClientSideInteractionFail = 147,
+    StackingRefreshExistingSpell = 148,
+    StackingTargetHasMorePowerfulSpells = 149,
+    StackingCasterHasMorePowerfulSpells = 150,
+    StackingError = 151,
+    Prereq_CasterCast = 152,
+    CCKnockdown = 153,
+    CCVulnerability = 154,
+    Target_MustBe_Knockdown = 155,
+    Target_MustBe_Vulnerability = 156,
+    Caster_MustBe_Vulnerability = 157,
+    Caster_MustBe_Knockdown = 158,
+    Caster_CannotBe_Knockdown = 159,
+    Caster_CannotBe_Vulnerability = 160,
+    Target_CannotBe_Vulnerability = 161,
+    Target_CannotBe_Knockdown = 162,
+    MissingReagent_Item = 163,
+    MissingReagent_ItemFamily = 164,
+    MissingReagent_ItemCategory = 165,
+    MissingReagent_ItemType = 166,
+    Caster_Needs_LoS = 167,
+    CasterVitalCostMana = 168,
+    TargetImmuneToSpellEffect = 169,
+    WeaponSlot = 170,
+    Caster_MustBe_Jumping = 171,
+    Caster_CannotBe_Jumping = 172,
+    Target_CannotBe_Jumping = 173,
+    Target_MustBe_Jumping = 174,
+    InvalidPosition = 175,
+    CasterVitalCost = 176,
+    CasterVitalCostShieldCapacity = 177,
+    CasterVitalCostResource7 = 178,
+    FailSpecialRestrictions = 179,
+    NoValidActivateSpell = 180,
+    SchematicAlreadyKnown = 181,
+    TradeskillTier = 182,
+    SpellNoCharges = 183,
+    TargetRangeVertical = 184,
+    StackingDuplicateDurationalSpell = 185,
+    SpellMaxPhaseReached = 186,
+    CCVulnerabilityWithAct = 187,
+    CCDisorient = 188,
+    CCDisable = 189,
+    CCTaunt = 190,
+    CCDeTaunt = 191,
+    CCBlind = 192,
+    CCKnockback = 193,
+    CCPushback = 194,
+    CCPull = 195,
+    CCPositionSwitch = 196,
+    CCTether = 197,
+    CCSnare = 198,
+    Caster_MustBe_Polymorph = 199,
+    Target_MustBe_Polymorph = 200,
+    Caster_CannotBe_Polymorph = 201,
+    Target_CannotBe_Polymorph = 202,
+    Caster_MustBe_Hold = 203,
+    Target_MustBe_Hold = 204,
+    Caster_CannotBe_Hold = 205,
+    Target_CannotBe_Hold = 206,
+    Caster_MustBe_Disorient = 207,
+    Target_MustBe_Disorient = 208,
+    Caster_CannotBe_Disorient = 209,
+    Target_CannotBe_Disorient = 210,
+    Caster_MustBe_Disable = 211,
+    Target_MustBe_Disable = 212,
+    Caster_CannotBe_Disable = 213,
+    Target_CannotBe_Disable = 214,
+    Caster_MustBe_Taunt = 215,
+    Target_MustBe_Taunt = 216,
+    Caster_CannotBe_Taunt = 217,
+    Target_CannotBe_Taunt = 218,
+    Caster_MustBe_DeTaunt = 219,
+    Target_MustBe_DeTaunt = 220,
+    Caster_CannotBe_DeTaunt = 221,
+    Target_CannotBe_DeTaunt = 222,
+    Caster_MustBe_Blind = 223,
+    Target_MustBe_Blind = 224,
+    Caster_CannotBe_Blind = 225,
+    Target_CannotBe_Blind = 226,
+    Caster_MustBe_Knockback = 227,
+    Target_MustBe_Knockback = 228,
+    Caster_CannotBe_Knockback = 229,
+    Target_CannotBe_Knockback = 230,
+    Caster_MustBe_Pushback = 231,
+    Target_MustBe_Pushback = 232,
+    Caster_CannotBe_Pushback = 233,
+    Target_CannotBe_Pushback = 234,
+    Caster_MustBe_Pull = 235,
+    Target_MustBe_Pull = 236,
+    Caster_CannotBe_Pull = 237,
+    Target_CannotBe_Pull = 238,
+    Caster_MustBe_PositionSwitch = 239,
+    Target_MustBe_PositionSwitch = 240,
+    Caster_CannotBe_PositionSwitch = 241,
+    Target_CannotBe_PositionSwitch = 242,
+    Caster_MustBe_Tether = 243,
+    Target_MustBe_Tether = 244,
+    Caster_CannotBe_Tether = 245,
+    Target_CannotBe_Tether = 246,
+    Caster_MustBe_Snare = 247,
+    Target_MustBe_Snare = 248,
+    Caster_CannotBe_Snare = 249,
+    Target_CannotBe_Snare = 250,
+    CasterVitalCostInterruptArmor = 251,
+    CCNoAbilities = 252,
+    Blacklisted = 253,
+    TargetCannotBePickup = 254,
+    CasterVitalCostAbsorption = 255,
+    Target_MustBe_CastersPet = 256,
+    Target_MustBe_CastersMaster = 257,
+    CCInterrupt = 258,
+    Caster_MustBe_Interrupt = 259,
+    Target_MustBe_Interrupt = 260,
+    Caster_CannotBe_Interrupt = 261,
+    Target_CannotBe_Interrupt = 262,
+    CSICooldown = 263,
+    CCDaze = 264,
+    Caster_MustBe_Daze = 265,
+    Target_MustBe_Daze = 266,
+    Caster_CannotBe_Daze = 267,
+    Target_CannotBe_Daze = 268,
+    CCSubdue = 269,
+    Caster_MustBe_Subdue = 270,
+    Target_MustBe_Subdue = 271,
+    Caster_CannotBe_Subdue = 272,
+    Target_CannotBe_Subdue = 273,
+    Target_CannotBe_Evading = 274,
+    Target_StructuredPlugBenefitRestricted = 275,
+    CasterVitalCostPublicResource0 = 276,
+    CasterVitalCostPublicResource1 = 277,
+    CasterVitalCostPublicResource2 = 278,
+    InactiveInnateAbilitySpell = 279,
+    Caster_CannotBe_Swimming = 280,
+    Caster_MustBe_Swimming = 281,
+    Prereq_TargetCast = 282,
+    Prereq_CasterPersistence = 283,
+    Prereq_TargetPersistence = 284,
+    Prereq_Trap = 285,
+    IllegalSpellCast = 286,
+    TargetNotInSameGroup = 287,
+    BossToken_Permission = 288,
+    BossToken_NotReady = 289,
+    CCGrounded = 290,
+    Caster_MustBe_Grounded = 291,
+    Target_MustBe_Grounded = 292,
+    Caster_CannotBe_Grounded = 293,
+    Target_CannotBe_Grounded = 294,
+    SpellUnknown = 1,
+    ItemAchievementComplete = 2,
+    Caster_CannotBeInCombat = 3,
+    Caster_MustBeInCombat = 4,
+    Target_CannotBeInCombat = 5,
+    Target_MustBeInCombat = 6,
+    CCDisableCinematic = 7,
+    Caster_MustBe_DisableCinematic = 8,
+    Target_MustBe_DisableCinematic = 9,
+    Caster_CannotBe_DisableCinematic = 10,
+    Target_CannotBe_DisableCinematic = 11,
+    CCAbilityRestriction = 12,
+    Caster_MustBe_AbilityRestriction = 13,
+    Target_MustBe_AbilityRestriction = 14,
+    Caster_CannotBe_AbilityRestriction = 15,
+    Target_CannotBe_AbilityRestriction = 16,
+    Target_VehicleBenefitRestricted = 17,
+    TargetCannotBePet = 18,
+    Target_HostileInvulnerability = 19,
+    Target_InvulnerableToOther = 20,
+    Target_BeneficialInvulnerability = 21,
+    Caster_MustBe_Falling = 22,
+    Caster_CannotBe_Falling = 23,
+    Target_CannotBe_Falling = 24,
+    Target_MustBe_Falling = 25,
+    Caster_MustBe_Sprinting = 26,
+    Caster_CannotBe_Sprinting = 27,
+    Target_CannotBe_Sprinting = 28,
+    Target_MustBe_Sprinting = 29,
+    Queued = 30,
+    ItemWrongRace = 31,
+    ItemWrongClass = 32,
+    ItemAlreadyUnlocked = 33,
+    PlayerSpellPending = 34,
+    Target_MustBe_PvpFlagged = 35,
+    Caster_MustBe_PvpFlagged = 36,
+    Target_OutsideTelegraph = 37,
+    ShieldsOverloaded = 38
+}
+Spell.CodeEnumSpellEffectType = {
+    UnitPropertyModifier = 1,
+    VitalModifier = 2,
+    SpellCounter = 3,
+    ForcedMove = 4,
+    CCStateSet = 5,
+    Transference = 6,
+    SummonVehicle = 7,
+    Activate = 8,
+    Damage = 9,
+    FactionSet = 10,
+    Heal = 11,
+    Harvest = 12,
+    DistanceDependentDamage = 13,
+    Script = 14,
+    Proc = 15,
+    UnitStateSet = 16,
+    Resurrect = 17,
+    Fluff = 18,
+    Scale = 19,
+    ProxyLinearAE = 20,
+    SummonCreature = 21,
+    HousingTeleport = 22,
+    ActionBarSet = 23,
+    ForcedAction = 24,
+    ProxyChannel = 25,
+    Proxy = 26,
+    CCStateBreak = 27,
+    ForceFacing = 28,
+    Absorption = 29,
+    SapVital = 30,
+    Disguise = 31,
+    SpellImmunity = 32,
+    DistributedDamage = 33,
+    ChangePhase = 34,
+    NpcExecutionDelay = 35,
+    SummonMount = 36,
+    ReputationModify = 37,
+    GiveSchematic = 38,
+    ModifySchematic = 39,
+    TradeSkillProfession = 40,
+    QuestAdvanceObjective = 41,
+    GiveItemToPlayer = 42,
+    GiveLootTableToPlayer = 43,
+    NpcLootTableModify = 44,
+    ThreatModification = 45,
+    ThreatTransfer = 46,
+    WarplotTeleport = 47,
+    CraftItem = 48,
+    ItemBreakdown = 49,
+    SpellForceRemoveChanneled = 50,
+    ModifyInterruptArmor = 51,
+    SpellDispel = 52,
+    TradeSkillProfessionXp = 53,
+    ModifySpell = 54,
+    ModifySpellEffect = 55,
+    AddSpell = 56,
+    AddSpellEffect = 57,
+    SuppressSpellEffect = 58,
+    CharmCreature = 20,
+    NpcSetAIState = 21,
+    VacuumLoot = 61,
+    RecalculateSpellModifications = 22,
+    ShieldOverload = 63,
+    Teleport = 64,
+    TitleGrant = 65,
+    TitleRevoke = 66,
+    VendorPriceModifier = 67,
+    GrantCharmerPet = 23,
+    RechargeItemBatteries = 69,
+    FacilityModification = 70,
+    PetAIStanceSet = 71,
+    ModifySpellCooldown = 72,
+    FinishingMove = 73,
+    ChangeIcon = 74,
+    ItemVisualSwap = 75,
+    AggroImmune = 76,
+    HobbyWrangleCreature = 24,
+    SpellEffectImmunity = 78,
+    SpellForceRemove = 79,
+    RavelSignal = 80,
+    ChangeDisplayName = 81,
+    Stealth = 82,
+    RemoveStealth = 83,
+    PathActionExplorerDig = 84,
+    HazardEnable = 85,
+    HazardModify = 86,
+    HazardSuspend = 87,
+    NpcForceFacing = 88,
+    DEPRECATED01 = 25,
+    DEPRECATED02 = 26,
+    AchievementAdvance = 91,
+    PathXpModify = 92,
+    ProxyChannelVariableTime = 93,
+    FullScreenEffect = 94,
+    ProxyRandomExclusive = 95,
+    DespawnUnit = 96,
+    SummonPet = 97,
+    MimicDisplayName = 98,
+    MimicDisguise = 99,
+    GrantXP = 100,
+    DatacubeUpdate = 101,
+    DatacubeVolumeUpdate = 102,
+    SettlerCampfire = 103,
+    SummonTrap = 104,
+    SetBusy = 105,
+    CooldownReset = 106,
+    RestedXpDecorBonus = 107,
+    LearnDyeColor = 108,
+    PetCastSpell = 109,
+    DisguiseOutfit = 110,
+    RewardBuffModifier = 111,
+    HousingEscape = 112,
+    NPCForceAIMovement = 113,
+    HealShields = 114,
+    PathMissionIncrement = 115,
+    GrantLevelScaledXP = 116,
+    DelayDeath = 117,
+    GrantLevelScaledPrestige = 118,
+    UnlockPetFlair = 119,
+    WarplotPlugUpgrade = 120,
+    SetMatchingEligibility = 121,
+    UnlockActionBar = 1,
+    UNUSED040 = 2,
+    ModifyCreatureFlags = 3,
+    UNUSED061 = 4,
+    UNUSED063 = 5,
+    ApplyLASChanges = 6,
+    GiveAbilityPointsToPlayer = 7,
+    ModifyAbilityCharges = 8,
+    UNUSED091 = 9,
+    UNUSED104 = 10,
+    UnlockMount = 11,
+    UnlockInlaidAugment = 12,
+    GiveAugmentPowerToPlayer = 13,
+    TemporarilyUnflagPvp = 14,
+    SupportStuck = 15,
+    MiniMapIcon = 16,
+    Disembark = 17,
+    ChangePlane = 18,
+    ModifyRestedXP = 19
+}
 function Spell:GetBaseSpellId()
 end
 function Spell:GetCastTimeOverride()
@@ -3467,6 +4281,16 @@ function Spell:__eq()
 end
 function Spell:__gc()
 end
+Spell.CodeEnumSpellTag = {
+    Assault = 1,
+    Support = 2,
+    Path = 3,
+    Misc = 4,
+    Mount = 5,
+    DoesNotUseSpecIndex = 6,
+    Utility = 7,
+    NotAutoActivated = 8
+}
 Talent = { }
 Talent.__index = Talent
 
@@ -3710,6 +4534,285 @@ function Unit.is()
 end
 function Unit.GetVitalTable()
 end
+Unit.CodeEnumCCState = {
+    Stunned = 1,
+    Sleep = 2,
+    Root = 3,
+    Disarm = 4,
+    Silence = 5,
+    Pacify = 6,
+    Fear = 7,
+    Confuse = 8,
+    Knockdown = 9,
+    Vulnerability = 10,
+    Stun = 1,
+    Polymorph = 2,
+    Hold = 3,
+    VulnerabilityWithAct = 4,
+    Disorient = 5,
+    Disable = 6,
+    Taunt = 7,
+    DeTaunt = 8,
+    Blind = 9,
+    Knockback = 10,
+    Pushback = 11,
+    Pull = 12,
+    PositionSwitch = 13,
+    Tether = 14,
+    Snare = 15,
+    Detaunt = 8,
+    Interrupt = 16,
+    Daze = 17,
+    Subdue = 18,
+    Grounded = 19,
+    DisableCinematic = 1,
+    AbilityRestriction = 2
+}
+Unit.CodeEnumEliteness = {
+    Standard = 1,
+    Elite = 2,
+    Boss = 3,
+    Solo = 1,
+    Group = 2,
+    SmallRaid = 3,
+    LargeRaid = 4
+}
+Unit.CodeEnumRank = {
+    Minion = 2,
+    Champion = 4,
+    Overlord = 3,
+    Fodder = 1,
+    Standard = 5,
+    Superior = 3,
+    Elite = 4
+}
+Unit.CodeEnumCastBarType = {
+    None = 1,
+    Normal = 2,
+    Telegraph_Backlash = 3,
+    Telegraph_Evade = 4
+}
+Unit.CodeEnumVital = {
+    Invalid = 1,
+    Health = 2,
+    Breath = 3,
+    ShieldCapacity = 4,
+    KineticCell = 5,
+    Resource0 = 6,
+    Resource1 = 7,
+    Resource2 = 8,
+    Resource3 = 9,
+    Resource4 = 10,
+    Resource5 = 11,
+    Resource6 = 12,
+    Resource7 = 13,
+    StalkerA = 14,
+    StalkerB = 15,
+    StalkerC = 16,
+    Mana = 17,
+    MedicCore = 1,
+    SpellSurge = 2,
+    InterruptArmor = 3,
+    Absorption = 4
+}
+Unit.CodeEnumProperties = {
+    Strength = 1,
+    Dexterity = 2,
+    Technology = 3,
+    Magic = 4,
+    Wisdom = 5,
+    HealthMax = 6,
+    HealthRegenMultiplier = 3,
+    ResourceMax_0 = 4,
+    ResourceMax_1 = 5,
+    ResourceMax_2 = 6,
+    ResourceMax_3 = 7,
+    ResourceMax_4 = 8,
+    ResourceMax_5 = 9,
+    ResourceMax_6 = 10,
+    ResourceRegenMultiplier_0 = 11,
+    ResourceRegenMultiplier_1 = 12,
+    ResourceRegenMultiplier_2 = 13,
+    ResourceRegenMultiplier_3 = 14,
+    ResourceRegenMultiplier_4 = 15,
+    ResourceRegenMultiplier_5 = 16,
+    ResourceRegenMultiplier_6 = 17,
+    AbilityPowerBase = 43,
+    AbilityPowerBaseRanged = 44,
+    AbilityPowerBaseSpell = 45,
+    ResistPhysical = 21,
+    ResistInnate = 26,
+    ResistElemental = 27,
+    Rating_Haste = 46,
+    Rating_AvoidReduce = 26,
+    Rating_AvoidIncrease = 27,
+    Rating_CritChanceIncrease = 28,
+    Rating_GlancingBlowReduce = 47,
+    Rating_CritHitSeverity = 48,
+    Rating_CritSeverityReduce = 49,
+    StalkerWoundMultiplier = 24,
+    KillingSpreeOutOfCombatGracePeriodMS = 25,
+    MoveSpeedMultiplier = 50,
+    BreathDecay = 50,
+    CCPower = 51,
+    CriticalHitSeverityMultiplier = 52,
+    Health_Total_Multiplier = 53,
+    JumpHeight = 54,
+    GravityMultiplier = 55,
+    XpMultiplier = 56,
+    ThreatMultiplier = 57,
+    AutoAttackDelayMultiplier = 58,
+    FallingDamageMultiplier = 59,
+    AbilityMultiplierBase = 55,
+    AbilityPowerMultiplierWeapon = 56,
+    AbilityPowerMultiplierAttributes = 57,
+    DamageDealtMultiplierMelee = 63,
+    DamageDealtMultiplierRanged = 64,
+    DamageDealtMultiplierSpell = 65,
+    DamageDealtMultiplierCut = 54,
+    DamageDealtMultiplierCrush = 55,
+    DamageDealtMultiplierImpale = 56,
+    DamageDealtMultiplierMental = 57,
+    DamageDealtMultiplierNature = 58,
+    DamageDealtMultiplierShadow = 59,
+    DamageDealtMultiplierFire = 60,
+    DamageDealtMultiplierCold = 61,
+    DamageDealtMultiplierElectric = 62,
+    DamageTakenOffsetCut = 63,
+    DamageTakenOffsetCrush = 64,
+    DamageTakenOffsetImpale = 65,
+    DamageTakenOffsetMental = 66,
+    DamageTakenOffsetNature = 67,
+    DamageTakenOffsetShadow = 68,
+    DamageTakenOffsetFire = 69,
+    DamageTakenOffsetCold = 70,
+    DamageTakenOffsetElectric = 71,
+    DamageTakenMultiplierPhysical = 72,
+    DamageTakenMultiplierInnate = 73,
+    DamageTakenMultiplierElemental = 74,
+    HealingMultiplierOutgoing = 75,
+    HealingMultiplierIncoming = 76,
+    ExecutingEnergyRateMultiplier = 77,
+    CCConsumptionRate = 78,
+    FinalAbilityPowerOffset = 58,
+    FinalAbilityPowerMultiplier = 59,
+    ResistPhysicalMitigationMultiplier = 81,
+    ResistInnateMitigationMultiplier = 82,
+    ResistElementalMitigationMultiplier = 83,
+    KillSpreeCCVMulitplier = 84,
+    ManaFinalMultiplier = 85,
+    ShieldCapacityMax = 34,
+    ShieldMitigationMin = 87,
+    ShieldMitigationMax = 88,
+    ShieldRegenPct = 89,
+    ShieldDamageTypes = 90,
+    ResistTech = 22,
+    ResistMagic = 23,
+    AssaultPower = 29,
+    SupportPower = 30,
+    ResourceMax_7 = 31,
+    ResourceRegenMultiplier_7 = 32,
+    Stamina = 33,
+    Armor = 35,
+    Rating_CritChanceDecrease = 36,
+    InterruptArmor_Threshold = 37,
+    InterruptArmor_RechargeTime = 38,
+    InterruptArmor_RechargeCount = 39,
+    BaseAvoidChance = 42,
+    BaseCritChance = 43,
+    AbsorptionMax = 15,
+    RegenManaInCombat = 51,
+    RegenManaNonCombat = 52,
+    DamageDealtMultiplierPhysical = 66,
+    DamageDealtMultiplierTech = 67,
+    DamageDealtMultiplierMagic = 68,
+    DamageTakenOffsetPhysical = 101,
+    DamageTakenOffsetTech = 102,
+    DamageTakenOffsetMagic = 103,
+    DamageTakenMultiplierTech = 104,
+    DamageTakenMultiplierMagic = 105,
+    CCDurationModifier = 106,
+    ResistTechMitigationMultiplier = 107,
+    ResistMagicMitigationMultiplier = 108,
+    ReputationMultiplier = 109,
+    SlowFallMultiplier = 110,
+    PathXpMultiplier = 111,
+    ScientistScanBotThoroughnessMultiplier = 112,
+    ScientistScanBotScanTimeMultiplier = 113,
+    ScientistScanBotRangeMultiplier = 114,
+    ScientistScanBotHealthMultiplier = 115,
+    ScientistScanBotHealtRegenhMultiplier = 60,
+    ScientistScanBotSpeedMultiplier = 117,
+    SettlerImprovementTimeMultiplier = 118,
+    CreatureScientistScanMultiplier = 119,
+    BaseHealth = 1,
+    ManaPerFiveSeconds = 2,
+    RatingCritSeverityIncrease = 40,
+    PvPOffenseRating = 53,
+    PvPDefenseRating = 54,
+    PvPPrestigeMultiplier = 48,
+    PvPXPMultiplier = 49,
+    ManaBase = 1,
+    InterruptArmor_AfterCCRechargeTime = 2,
+    InterruptArmor_AfterCCRechargeCount = 3,
+    PvPOffensiveRating = 4,
+    PvPDefensiveRating = 5,
+    DamageMitigationPctOffset = 6,
+    BaseAvoidReduceChance = 7,
+    BaseAvoidCritChance = 8,
+    StealthDetectionModifier = 9,
+    ManaRegenInCombat = 10,
+    ManaRegenOutOfCombat = 11,
+    SeeThroughStealth = 12,
+    FrictionMax = 13,
+    Deprecated1 = 14,
+    Deprecated2 = 15,
+    RenownGainMultiplier = 16,
+    MoneyDropMultiplier = 17,
+    SpellMechanicEnergyRegenOrDecayMultiplier = 18,
+    SpellMechanicEnergyDecayOverdriveMultiplier = 19,
+    ItemArmor = 20,
+    ItemAssaultPower = 21,
+    ItemSupportPower = 22,
+    IgnoreArmorBase = 23,
+    IgnoreShieldBase = 24,
+    MaxThreatVsCreature = 25,
+    ManaCostModifier = 26,
+    CooldownReductionModifier = 27,
+    BaseLifesteal = 28,
+    DamageMitigationPctOffsetPhysical = 29,
+    DamageMitigationPctOffsetTech = 30,
+    DamageMitigationPctOffsetMagic = 31,
+    PvPOffensePctOffset = 32,
+    PvPDefensePctOffset = 33,
+    ShieldTickTime = 34,
+    ShieldRebootTime = 35,
+    ScientistScanBotHealthRegenMultiplier = 36,
+    ScientistScanBotCooldownMultiplier = 37,
+    MountSpeedMultiplier = 38,
+    MoneyQuestMultiplier = 39,
+    XpQuestMultiplier = 40,
+    ReputationQuestMultiplier = 41,
+    PrestigeQuestMultiplier = 42
+}
+Unit.CodeEnumTargetDifficulty = {
+    Grey = 1,
+    Green = 2,
+    Blue = 3,
+    Yellow = 4,
+    Orange = 5,
+    Red = 6,
+    Purple = 7
+}
+Unit.CodeEnumResourceConversionType = {
+    Item2Item = 1,
+    Item2Rep = 2,
+    Prereq2Rep = 1
+}
+Unit.CodeEnumFlightPathType = {
+    Local = 1,
+    Transfer = 2
+}
 function Unit:GetGender()
 end
 function Unit:GetManaRegenInCombat()
@@ -3792,6 +4895,35 @@ function Unit:IsTaggedByMe()
 end
 function Unit:IsSoftKill()
 end
+Unit.CodeEnumLevelDifferentialAttribute = {
+    Grey = 1,
+    Green = 2,
+    Cyan = 3,
+    Blue = 4,
+    White = 5,
+    Yellow = 6,
+    Orange = 7,
+    Red = 8,
+    Magenta = 9
+}
+Unit.CodeEnumFaction = {
+    DominionPlayer = 1,
+    ExilesPlayer = 2
+}
+Unit.CodeEnumGender = {
+    Male = 1,
+    Female = 2,
+    Uni = 3
+}
+Unit.CodeEnumSpellMechanic = {
+    None = 1,
+    Focus = 2,
+    MedicCore = 3,
+    Empathy = 4,
+    SpellSurge = 5,
+    Kinetic = 6,
+    Volatility = 7
+}
 function Unit:GetUnitRaceId()
 end
 function Unit:GetAssaultPower()
@@ -3942,6 +5074,24 @@ function Unit:ShouldDisplayMountHealth()
 end
 function Unit:__eq()
 end
+Unit.CodeEnumDisposition = {
+    Hostile = 1,
+    Neutral = 2,
+    Friendly = 3,
+    Unknown = 4
+}
+Unit.CodeEnumLootItemType = {
+    StaticItem = 1,
+    Cash = 2,
+    VirtualItem = 3,
+    AdventureSpell = 4
+}
+Unit.CodeEnumCCStateStunVictimGameplay = {
+    Forward = 1,
+    Backward = 2,
+    Left = 3,
+    Right = 4
+}
 CharacterTitle = { }
 CharacterTitle.__index = CharacterTitle
 
@@ -4900,6 +6050,1268 @@ function Challenges:__eq()
 end
 function Challenges:__gc()
 end
+Button = { }
+Button.__index = Button
+
+function Button:ChangeArt(strButtonBase)
+end
+function Button:GetCooldownPercent()
+end
+function Button:SetCooldownPercent(fCooldownPercent)
+end
+function Button:GetContentType()
+end
+function Button:SetContentType(strContentType)
+end
+function Button:GetContentId()
+end
+function Button:SetContentId(nContentId)
+end
+function Button:SetCheck(bCheck)
+end
+function Button:IsChecked()
+end
+function Button:SetNormalTextColor(clr)
+end
+function Button:SetPressedTextColor(clr)
+end
+function Button:SetFlybyTextColor(clr)
+end
+function Button:SetPressedFlybyTextColor(clr)
+end
+function Button:SetDisabledTextColor(clr)
+end
+function Button:AttachWindow()
+end
+function Button:SetInnerMargin()
+end
+EditBox = { }
+EditBox.__index = EditBox
+
+function EditBox:ClearText()
+end
+function EditBox:SetText(strText)
+end
+function EditBox:GetText()
+end
+function EditBox:SetSel(nBegin, nEnd)
+end
+function EditBox:AddHistoryString(strHistoryString)
+end
+function EditBox:GetHistoryStrings()
+end
+function EditBox:ClearHistoryStrings()
+end
+function EditBox:CopyTextToClipboard()
+end
+function EditBox:PasteTextFromClipboard()
+end
+function EditBox:InsertText()
+end
+function EditBox:GetSel()
+end
+function EditBox:HitTest()
+end
+function EditBox:AddLink()
+end
+function EditBox:GetAllLinks()
+end
+function EditBox:SetPrompt()
+end
+function EditBox:RemoveLinks()
+end
+function EditBox:SetMaxTextLength()
+end
+function EditBox:GetMaxTextLength()
+end
+GridWindow = { }
+GridWindow.__index = GridWindow
+
+function GridWindow:AddRow(strText, strImage, newLuaData)
+end
+function GridWindow:DeleteAll()
+end
+function GridWindow:DeleteRow(nRow)
+end
+function GridWindow:DeleteRowsByData(luaData)
+end
+function GridWindow:EnableCell(nRow, nCol, newEnable)
+end
+function GridWindow:EnableRow(nRow, newEnable)
+end
+function GridWindow:EnsureCellVisible(nRow, nCol)
+end
+function GridWindow:GetColumnCount()
+end
+function GridWindow:GetCurrentColumn()
+end
+function GridWindow:GetCurrentRow()
+end
+function GridWindow:GetFocusColumn()
+end
+function GridWindow:GetFocusRow()
+end
+function GridWindow:GetItemData(nRow, nCol)
+end
+function GridWindow:GetItemText(nRow, nCol)
+end
+function GridWindow:GetRowCount()
+end
+function GridWindow:HitTest(ptX, ptY)
+end
+function GridWindow:InsertRow()
+end
+function GridWindow:IsCellSelected(nRow, nCol)
+end
+function GridWindow:SelectCell(nRow, nCol)
+end
+function GridWindow:SelectCellByData(bEqual, bFireEvent)
+end
+function GridWindow:SetColumnText(nCol, strText)
+end
+function GridWindow:SetCellData(nRow, nCol, strText, strImage, newLuaData)
+end
+function GridWindow:SetCellIconOverlays(nRow, nCol, strLeft, strRight)
+end
+function GridWindow:SetCellDoc(nRow, nCol, strText)
+end
+function GridWindow:SetCellImage(nRow, nCol, strImage)
+end
+function GridWindow:SetCellText(nRow, nCol, strText)
+end
+function GridWindow:SetCurrentColumn(nCol)
+end
+function GridWindow:SetCurrentRow(nRow)
+end
+function GridWindow:SetCellBGNormal(strText, color)
+end
+function GridWindow:SetCellBGNormalFocus(strText, color)
+end
+function GridWindow:SetCellBGSelected(strText, color)
+end
+function GridWindow:SetCellBGSelectedFocus(strText, color)
+end
+function GridWindow:SetCellLuaData()
+end
+function GridWindow:GetCellLuaData()
+end
+function GridWindow:GetSortColumn()
+end
+function GridWindow:GetCellData()
+end
+function GridWindow:GetCellText()
+end
+function GridWindow:IsSortAscending()
+end
+function GridWindow:SetColumnWidth()
+end
+function GridWindow:SetCellImageColor()
+end
+function GridWindow:SetCellSortText()
+end
+function GridWindow:SetCellBGBase()
+end
+function GridWindow:SetSortColumn()
+end
+function GridWindow:SetHeaderBGBase()
+end
+function GridWindow:GetColumnWidth()
+end
+IconListBox = { }
+IconListBox.__index = IconListBox
+
+function IconListBox:AddEntry(strText, strSubText, nEntryId, strSprite)
+end
+function IconListBox:Clear()
+end
+MenuBarWindow = { }
+MenuBarWindow.__index = MenuBarWindow
+
+function MenuBarWindow:LoadMenu(strFile, strMenu)
+end
+MLWindow = { }
+MLWindow.__index = MLWindow
+
+function MLWindow:GetContentSize()
+end
+function MLWindow:SetAML(strAMLString)
+end
+function MLWindow:SetDoc(pDoc)
+end
+function MLWindow:SetHeightToContentHeight(nBuffer)
+end
+function MLWindow:BeginDoogie(fRate)
+end
+function MLWindow:PauseDoogie(bPauseDoogie)
+end
+function MLWindow:StopDoogie()
+end
+function MLWindow:IsReadyToDraw()
+end
+ProgressBar = { }
+ProgressBar.__index = ProgressBar
+
+function ProgressBar:SetFloor(fFloor)
+end
+function ProgressBar:SetMax(fMax)
+end
+function ProgressBar:SetProgress(fProgress, fRate)
+end
+function ProgressBar:SetEmptySprite(strText)
+end
+function ProgressBar:SetFullSprite(strText)
+end
+function ProgressBar:SetFillSprite(strText)
+end
+function ProgressBar:SetGlowSprite(strText)
+end
+function ProgressBar:EnableGlow(bEdgeGlow)
+end
+function ProgressBar:SetTickSprites(strOff, strOn)
+end
+function ProgressBar:SetTickLocations(nTickCount, fTickLoc)
+end
+function ProgressBar:SetBarColor(clr)
+end
+function ProgressBar:SetRadialMin()
+end
+function ProgressBar:SetRadialMax()
+end
+SliderBar = { }
+SliderBar.__index = SliderBar
+
+function SliderBar:GetValue()
+end
+function SliderBar:SetMinMax(fMin, fMax, fTickAmount)
+end
+function SliderBar:SetValue(fValue)
+end
+function SliderBar:IsThumbDragging()
+end
+Spinner = { }
+Spinner.__index = Spinner
+
+function Spinner:SetMinMax(fMin, fMax, nNumDecimals)
+end
+function Spinner:SetIncRates(tThresholdsAndRates)
+end
+function Spinner:SetValue(fValue)
+end
+function Spinner:GetValue()
+end
+TabWindow = { }
+TabWindow.__index = TabWindow
+
+function TabWindow:AttachTab(pAttachee, bStayOnTop)
+end
+function TabWindow:Detach()
+end
+function TabWindow:IsLocked()
+end
+function TabWindow:Lock(bLock)
+end
+function TabWindow:IsAttached()
+end
+function TabWindow:IsAttachedToTab()
+end
+TreeControl = { }
+TreeControl.__index = TreeControl
+
+function TreeControl:AddNode(hParentHandle, strText, strImage, newLuaData)
+end
+function TreeControl:CollapseNode(hNodeHandle)
+end
+function TreeControl:DeleteAll()
+end
+function TreeControl:DeleteChildren(hNodeHandle)
+end
+function TreeControl:DeleteNode(hNodeHandle)
+end
+function TreeControl:ExpandNode(hNodeHandle)
+end
+function TreeControl:GetParentNode(hNodeHandle)
+end
+function TreeControl:GetFirstChildNode(hNodeHandle)
+end
+function TreeControl:GetFirstVisibleNode(hNodeHandle)
+end
+function TreeControl:GetNextSibling(hNodeHandle)
+end
+function TreeControl:GetNextVisibleNode(hNodeHandle)
+end
+function TreeControl:GetNodeText(hNodeHandle)
+end
+function TreeControl:GetSelectedNode()
+end
+function TreeControl:GetNodeData(hNodeHandle)
+end
+function TreeControl:HitTest(nXpos, nYpos)
+end
+function TreeControl:NodeHasChildren()
+end
+function TreeControl:SelectNode(hNodeHandle)
+end
+function TreeControl:SetColumnWidth(nCol, nWidth)
+end
+function TreeControl:SetMinimumNodeHeight(hNodeHandle, nMinHeight)
+end
+function TreeControl:SetNodeImage(hNodeHandle, strText)
+end
+function TreeControl:SetNodeText(hNodeHandle, strText)
+end
+function TreeControl:SetNodeTextColor(hNodeHandle, clr)
+end
+function TreeControl:GetColumnWidth()
+end
+function TreeControl:SetHeaderImage()
+end
+function TreeControl:SetHeaderText()
+end
+function TreeControl:SetHeaderTextColor()
+end
+Window = { }
+Window.__index = Window
+
+function Window:AddEventMapping(strEventName, strFunction)
+end
+function Window:BringChildToTop(wndChild)
+end
+function Window:Close()
+end
+function Window:Contains(nPosX, nPosY)
+end
+function Window:ContainsMouse()
+end
+function Window:Destroy()
+end
+function Window:DestroyChildren()
+end
+function Window:Enable(bEnable)
+end
+function Window:GetBGColor()
+end
+function Window:GetData()
+end
+function Window:GetId()
+end
+function Window:GetMouse()
+end
+function Window:GetName()
+end
+function Window:SetName(strName)
+end
+function Window:GetPos()
+end
+function Window:GetLocation()
+end
+function Window:GetParent()
+end
+function Window:GetRadioSel(strRadio)
+end
+function Window:GetRadioSelButton(strRadio)
+end
+function Window:GetGlobalRadioSel(strRadio)
+end
+function Window:GetGlobalRadioSelButton(strRadio)
+end
+function Window:GetScale()
+end
+function Window:SetScale(fNewScale)
+end
+function Window:GetRotation()
+end
+function Window:SetRotation(fNewRotation)
+end
+function Window:GetText()
+end
+function Window:IsEnabled()
+end
+function Window:IsShown()
+end
+function Window:IsVisible()
+end
+function Window:SetSizingMinimum(nWidth, nHeight)
+end
+function Window:SetSizingMaximum(nWidth, nHeight)
+end
+function Window:MoveToLoc()
+end
+function Window:MoveToLocation(wndLoc)
+end
+function Window:SetTooltipDoc(pXml)
+end
+function Window:SetTooltipDocSecondary(pXml)
+end
+function Window:LoadTooltipForm(strFile, strForm, tTable)
+end
+function Window:LoadTooltipFormSecondary(strFile, strForm, tTable)
+end
+function Window:TransitionMove(nMinX, nMinY, nOffX, nOffY, fRate, bContinuous)
+end
+function Window:TransitionMoveFrom(nMinX, nMinY, nOffX, nOffY, fRate, bContinuous)
+end
+function Window:TransitionPulse(fScale, fRate, bContinuous)
+end
+function Window:AttachAnim(strAnimDataId)
+end
+function Window:DetachAnim()
+end
+function Window:PlayAnim(fDelay)
+end
+function Window:UnpauseAnim()
+end
+function Window:PauseAnim()
+end
+function Window:IsAnimPlaying()
+end
+function Window:GetAnimElapsedTime()
+end
+function Window:SetAnimElapsedTime(fTime)
+end
+function Window:SetAnimPlaybackRate(fRate)
+end
+function Window:SetBGColor(clr)
+end
+function Window:SetClientSprite(wndB)
+end
+function Window:SetData(lData)
+end
+function Window:WindowPointToClientPoint(nPosX, nPosY)
+end
+function Window:ClientPointToWindowPoint(nPosX, nPosY)
+end
+function Window:EnsureChildVisible(wndChild)
+end
+function Window:GetVScrollPos()
+end
+function Window:GetVScrollRange()
+end
+function Window:SetVScrollPos(nNewPos)
+end
+function Window:SetVScrollInfo(nRange, nPageSize, nMinInc)
+end
+function Window:GetHScrollPos()
+end
+function Window:GetHScrollRange()
+end
+function Window:SetHScrollPos(nNewPos)
+end
+function Window:SetHScrollInfo(nRange, nPageSize, nIncrement)
+end
+function Window:SetOpacity(fOpacity, fRate)
+end
+function Window:GetOpacity()
+end
+function Window:GetAnchorOffsets()
+	return 0, 0, 0, 0
+end
+function Window:SetAnchorOffsets(nLeft, nTop, nRight, nBottom)
+end
+function Window:GetAnchorPoints()
+end
+function Window:SetAnchorPoints(nLeft, nTop, nRight, nBottom)
+end
+function Window:SetNamedAnchor(fPoint, nOffset, bOverwrite)
+end
+function Window:ArrangeChildrenVert(nOrigin)
+end
+function Window:ArrangeChildrenHorz(nOrigin)
+end
+function Window:ArrangeChildrenTiles(nOrigin)
+end
+function Window:SetFocus()
+end
+function Window:ClearFocus()
+end
+function Window:SetSprite(strSprite)
+end
+function Window:SetSpriteRate(fTime)
+end
+function Window:SetSpriteProgress(fTime)
+end
+function Window:SetSpriteTime(fTime)
+end
+function Window:SetSpriteTargetDuration(fTime)
+end
+function Window:GetSprite()
+end
+function Window:SetStyle(strText, bOn)
+end
+function Window:AddStyle(strStyle)
+end
+function Window:RemoveStyle(strStyle)
+end
+function Window:SetStyleEx(strStyle)
+end
+function Window:AddStyleEx(strStyle)
+end
+function Window:RemoveStyleEx(strStyle)
+end
+function Window:SetRadioSel(strRadio, nSelection)
+end
+function Window:SetRadioSelButton(strRadio, bButton)
+end
+function Window:SetGlobalRadioSel(strRadio)
+end
+function Window:SetText(strNewText)
+end
+function Window:SetTextColor(clr)
+end
+function Window:SetTextFlags(strText, bOn)
+end
+function Window:SetFont(strText)
+end
+function Window:SetTooltip(strTip)
+end
+function Window:SetTooltipToWindow(wndB)
+end
+function Window:SetTooltipType(nType)
+end
+function Window:Show(bShow, bImmediate)
+end
+function Window:SetLoaded(bLoaded)
+end
+function Window:Reposition()
+end
+function Window:ToFront()
+end
+function Window:SetSelfAnchor()
+end
+function Window:GetWidth()
+	return 0
+end
+function Window:GetHeight()
+	return 0
+end
+function Window:GetRect(nLeft, nTop, nRight, nBottom)
+end
+function Window:Move(nLeft, nTop, nWidth, nHeight)
+end
+function Window:FindChild(strName)
+	local form = setmetatable({}, Window)
+	return form
+end
+function Window.is()
+end
+Window.CodeEnumArrangeOrigin = {
+    LeftOrTop = 1,
+    Middle = 2,
+    RightOrBottom = 3
+}
+function Window:FindChildByUserData()
+end
+function Window:GetChildren()
+end
+function Window:IsValid()
+end
+function Window:RecalculateContentExtents()
+end
+function Window:GetFrame()
+end
+function Window:IsMouseTarget()
+end
+function Window:IsChildOfMouseTarget()
+end
+function Window:IsParentOfMouseTarget()
+end
+function Window:AddPixie()
+end
+function Window:UpdatePixie()
+end
+function Window:GetPixieInfo()
+end
+function Window:DestroyPixie()
+end
+function Window:DestroyAllPixies()
+end
+function Window:RestartPixieSprite()
+end
+function Window:AddEventHandler()
+end
+function Window:RemoveEventHandler()
+end
+function Window:GetTransLocation()
+end
+function Window:SetTooltipForm()
+end
+function Window:SetTooltipFormSecondary()
+end
+function Window:HasTooltip()
+end
+function Window:HasTooltipSecondary()
+end
+function Window:SetBGOpacity()
+end
+function Window:GetBGOpacity()
+end
+function Window:SetNCOpacity()
+end
+function Window:GetNCOpacity()
+end
+function Window:SetTextRaw()
+end
+function Window:SetWindowSubclass()
+end
+function Window:GetWindowSubclass()
+end
+function Window:SetCanResize()
+end
+function Window:Invoke()
+end
+function Window:GetClientRect()
+end
+function Window:GetOriginalLocation()
+end
+function Window:IsStyleOn()
+end
+function Window:IsStyleExOn()
+end
+function Window:ResetSubclass()
+end
+function Window:__gc()
+end
+function Window:__eq()
+end
+AbilityItemWindow = { }
+AbilityItemWindow.__index = AbilityItemWindow
+
+function AbilityItemWindow:GetAbilityId()
+end
+function AbilityItemWindow:SetAbilityId(nSpellId)
+end
+function AbilityItemWindow:GetAbilityDescription()
+end
+function AbilityItemWindow:GetAbilityName()
+end
+function AbilityItemWindow:GetMaxAbilityId()
+end
+function AbilityItemWindow:SetSelected(bSelected)
+end
+function AbilityItemWindow:GetAbilityTierId()
+end
+BagWindow = { }
+BagWindow.__index = BagWindow
+
+function BagWindow:AreAnyItemsNew(nNewBagSlot)
+end
+function BagWindow:AssignBag(nData, nWhichBag)
+end
+function BagWindow:CanAssignBag(nSource, nDest)
+end
+function BagWindow:CanRemoveBag(nWhichBag)
+end
+function BagWindow:CanDropItemInBag(nData, nWhichBag)
+end
+function BagWindow:DeleteItem(nToDelete)
+end
+function BagWindow:GetItem(nData)
+end
+function BagWindow:DropItemInBag(nData, nWhichBag)
+end
+function BagWindow:GetBagCapacity()
+end
+function BagWindow:GetBagId()
+end
+function BagWindow:GetTotalBagSlots()
+end
+function BagWindow:GetTotalEmptyBagSlots()
+end
+function BagWindow:GetInventoryIdForBag(nBag)
+end
+function BagWindow:IsBagEquipped(nWhichBag)
+end
+function BagWindow:IsItemABag(nData)
+end
+function BagWindow:MarkAllItemsAsSeen()
+end
+function BagWindow:SetBagId(nBagSlot)
+end
+function BagWindow:SetBoxesPerRow(nBoxesPerRow)
+end
+function BagWindow:SetSquareSize(nX, nY)
+end
+function BagWindow:SwapBagItems()
+end
+function BagWindow:DoAnyItemsBeginQuest()
+end
+function BagWindow:SalvageItem()
+end
+function BagWindow:SetNewQuestOverlaySprite()
+end
+function BagWindow:StartSplitStack()
+end
+function BagWindow:GetBagItem()
+end
+function BagWindow:SetCannotUseSprite()
+end
+function BagWindow:SetCannotUseColor()
+end
+function BagWindow:SetNewItemOverlaySprite()
+end
+BuffWindow = { }
+BuffWindow.__index = BuffWindow
+
+function BuffWindow:SetUnit(newUnit)
+end
+function BuffWindow:GetBuffTooltip()
+end
+CashWindow = { }
+CashWindow.__index = CashWindow
+
+function CashWindow:GetAmount()
+end
+function CashWindow:GetCurrency()
+end
+function CashWindow:SetAmount(nAmount, bInstant)
+end
+function CashWindow:SetMoneySystem(nWhich)
+end
+function CashWindow:GetAMLDocForAmount(nAmount, bUseZeroes, clr, strFont)
+end
+function CashWindow:GetAMLDocForPrice(nAmount1, nCurrencyType1, nAmount2, nCurrencyType2, bDisabled, strFont)
+end
+function CashWindow:SetAmountLimit()
+end
+function CashWindow:GetAmountLimit()
+end
+CooldownWindow = { }
+CooldownWindow.__index = CooldownWindow
+
+function CooldownWindow:SetCooldownPercentage(fPercent)
+end
+CostumeWindow = { }
+CostumeWindow.__index = CostumeWindow
+
+function CostumeWindow:SetCamera(strCameraName)
+end
+function CostumeWindow:SetOverlay(strFileName)
+end
+function CostumeWindow:SetCostume(pTarget)
+end
+function CostumeWindow:SetCostumeToCreatureId(nCreatureId)
+end
+function CostumeWindow:SetCostumeToRaceGender(nRace)
+end
+function CostumeWindow:SetAttachment(nIdSlot, nIdAttach)
+end
+function CostumeWindow:SetMask(strFilename)
+end
+function CostumeWindow:SetAnimated(bAnimated)
+end
+function CostumeWindow:SetQuality(fQuality)
+end
+function CostumeWindow:SetFrame(nFrame)
+end
+function CostumeWindow:SetSpeed(fSpeed)
+end
+function CostumeWindow:SetSheathed(bSheathed)
+end
+function CostumeWindow:IsSheathed()
+end
+function CostumeWindow:PlayTalkSequence()
+end
+function CostumeWindow:StopTalkSequence()
+end
+function CostumeWindow:SetModelSequence(nSequence)
+end
+function CostumeWindow:ToggleLeftSpin(bHold)
+end
+function CostumeWindow:ToggleRightSpin(bHold)
+end
+function CostumeWindow:SetCostumeToActor()
+end
+function CostumeWindow:SetCostumeToGuildStandard()
+end
+function CostumeWindow:SetGuildStandardPart()
+end
+function CostumeWindow:SetItem()
+end
+function CostumeWindow:SetItemDye()
+end
+function CostumeWindow:SetItemsByCreationId()
+end
+ItemSlotWindow = { }
+ItemSlotWindow.__index = ItemSlotWindow
+
+function ItemSlotWindow:SetContentId()
+end
+function ItemSlotWindow:GetItem()
+end
+function ItemSlotWindow:GetSprWhenEmpty()
+end
+MiniMapWindow = { }
+MiniMapWindow.__index = MiniMapWindow
+
+function MiniMapWindow:AddObject(nPos, strName, iInfo, tCheckFlag)
+end
+function MiniMapWindow:AddUnit(pUnit, iInfo, tCheckFlag)
+end
+function MiniMapWindow:AddQuestIndicator(pQuest, strNum, iInfo, tCheckFlag)
+end
+function MiniMapWindow:AddPathIndicator()
+end
+function MiniMapWindow:ClearQuestIndicators()
+end
+function MiniMapWindow:ClearPathIndicators()
+end
+function MiniMapWindow:ZoomIn()
+end
+function MiniMapWindow:ZoomOut()
+end
+function MiniMapWindow:GetObjectsAtPoint(nPointX, nPointY)
+end
+function MiniMapWindow:RemoveObject(nObjectId)
+end
+function MiniMapWindow:RemoveUnit(pUnitHandle)
+end
+function MiniMapWindow:ClientPointToWorldLoc(nPointX, nPointY)
+end
+function MiniMapWindow:SetMapOrientation(nOrient)
+end
+function MiniMapWindow:AddLine()
+end
+function MiniMapWindow:RemoveLine()
+end
+function MiniMapWindow:GetLineInfo()
+end
+function MiniMapWindow:RemoveAllLines()
+end
+function MiniMapWindow:CreateOverlayType()
+end
+function MiniMapWindow:RemoveObjectByType()
+end
+function MiniMapWindow:RemoveAllObjects()
+end
+function MiniMapWindow:RemoveObjectByUserData()
+end
+function MiniMapWindow:SetZoomLevel()
+end
+function MiniMapWindow:GetZoomLevel()
+end
+function MiniMapWindow:RemoveObjectsByType()
+end
+function MiniMapWindow:RemoveObjectsByUserData()
+end
+function MiniMapWindow:HideObjectsByType()
+end
+function MiniMapWindow:HideObjectsByUserData()
+end
+function MiniMapWindow:ShowObjectsByType()
+end
+function MiniMapWindow:ShowObjectsByUserData()
+end
+ZoneMapWindow = { }
+ZoneMapWindow.__index = ZoneMapWindow
+
+function ZoneMapWindow:IsShowLabelsOn()
+end
+function ZoneMapWindow:SetZone(nZone)
+end
+function ZoneMapWindow:IsZoneReady()
+end
+function ZoneMapWindow:ShowLabels(bShowLabels)
+end
+function ZoneMapWindow:GetZoneCount()
+end
+function ZoneMapWindow:GetZoneInfo(nZone)
+end
+function ZoneMapWindow:GetCurrentZoneIndex()
+end
+function ZoneMapWindow:GetNecessaryHexCount()
+end
+function ZoneMapWindow:GetRevealedHexCount()
+end
+function ZoneMapWindow:GetObjectsAt(nPointX, nPointY)
+end
+function ZoneMapWindow:RemoveAllObjects()
+end
+function ZoneMapWindow:RevealLocation(nPos)
+end
+function ZoneMapWindow:ClearAllIndyDots()
+end
+function ZoneMapWindow:AddIndyDot(nPos)
+end
+function ZoneMapWindow:AddQuestIndicator(pQuest, strNum, crShade, strIcon)
+end
+function ZoneMapWindow:ClearQuestIndicators()
+end
+function ZoneMapWindow:ClearPathIndicators()
+end
+function ZoneMapWindow:AddPathIndicator(nMissionId)
+end
+function ZoneMapWindow:GetContinents()
+end
+function ZoneMapWindow:GetContinentInfo(strContinent)
+end
+function ZoneMapWindow:GetDisplayMode()
+end
+function ZoneMapWindow:GetZoneAtPoint(x, y)
+end
+function ZoneMapWindow:GetHexAtPoint(x, y)
+end
+function ZoneMapWindow:AddObject(tWorldLoc, strName, tInfo, tFlags)
+end
+function ZoneMapWindow:RemoveObject(idObject)
+end
+function ZoneMapWindow:RemoveUnit(idUnit)
+end
+function ZoneMapWindow:AddUnit(unitId, tInfo, tFlags)
+end
+function ZoneMapWindow:SetDisplayMode(eMode)
+end
+function ZoneMapWindow:SetPlayerArrowSprite(strSpriteName)
+end
+function ZoneMapWindow:SetHexOverlaySprite(strSpriteName)
+end
+function ZoneMapWindow:SetIndyDotSprite(strSpriteName)
+end
+function ZoneMapWindow:GetWorldLocAtPoint(x, y)
+end
+function ZoneMapWindow:GetCurrentContinentIndex()
+end
+function ZoneMapWindow:RemoveAllRegions()
+end
+function ZoneMapWindow:SetGhostWindow()
+end
+function ZoneMapWindow:SetPlayerDotSprite()
+end
+function ZoneMapWindow:SetActiveHexSprite()
+end
+function ZoneMapWindow:SetInactiveHexSprite()
+end
+function ZoneMapWindow:SetActiveHexEdgeSprite()
+end
+function ZoneMapWindow:SetInactiveHexEdgeSprite()
+end
+function ZoneMapWindow:SetLabelBackerSprite()
+end
+function ZoneMapWindow:SetLabelTextColor()
+end
+function ZoneMapWindow:AddLine()
+end
+function ZoneMapWindow:RemoveLine()
+end
+function ZoneMapWindow:GetLineInfo()
+end
+function ZoneMapWindow:RemoveAllLines()
+end
+function ZoneMapWindow:SetLineColor()
+end
+function ZoneMapWindow:GetLinesAt()
+end
+function ZoneMapWindow:GetAllLines()
+end
+function ZoneMapWindow:GetRegionsAt()
+end
+function ZoneMapWindow:RemovePathIndicator()
+end
+function ZoneMapWindow:IsShowPlayerOn()
+end
+function ZoneMapWindow:CenterOnPlayer()
+end
+function ZoneMapWindow:ShowPlayer()
+end
+function ZoneMapWindow:GetAllSubZoneInfo()
+end
+function ZoneMapWindow:GetAllZoneInfo()
+end
+function ZoneMapWindow:CanZoomZone()
+end
+function ZoneMapWindow:SetMinDisplayMode()
+end
+function ZoneMapWindow:SetMaxDisplayMode()
+end
+function ZoneMapWindow:SetObjectRadius()
+end
+function ZoneMapWindow:GetObjectRadius()
+end
+function ZoneMapWindow:RemoveObjectByType()
+end
+function ZoneMapWindow:RemoveObjectByUserData()
+end
+function ZoneMapWindow:AddRegion()
+end
+function ZoneMapWindow:GetHexGroupHexes()
+end
+function ZoneMapWindow:RemoveRegion()
+end
+function ZoneMapWindow:RemoveRegionByType()
+end
+function ZoneMapWindow:RemoveRegionByUserData()
+end
+function ZoneMapWindow:SelectRegionDisplay()
+end
+function ZoneMapWindow:SelectRegionDisplayByType()
+end
+function ZoneMapWindow:SelectRegionDisplayByUserData()
+end
+function ZoneMapWindow:CreateOverlayType()
+end
+ZoneMapWindow.CodeEnumDisplayMode = {
+    SuperPanning = 1,
+    Panning = 2,
+    Scaled = 3,
+    Continent = 4,
+    World = 5,
+    SolarSystem = 6
+}
+function ZoneMapWindow:GetContinentZoneInfo()
+end
+function ZoneMapWindow:GetAllNemesisRegionInfo()
+end
+function ZoneMapWindow:GetNemesisRegionInfo()
+end
+function ZoneMapWindow:HideObjectsByType()
+end
+function ZoneMapWindow:ShowObjectsByType()
+end
+function ZoneMapWindow:SetObjectsVisibility()
+end
+function ZoneMapWindow:AddObjectByWorldLocId()
+end
+function ZoneMapWindow:RemoveObjectsByType()
+end
+function ZoneMapWindow:RemoveObjectsByUserData()
+end
+function ZoneMapWindow:ShowRegionsByUserData()
+end
+function ZoneMapWindow:HideRegionsByUserData()
+end
+function ZoneMapWindow:ShowRegionsByType()
+end
+function ZoneMapWindow:HideRegionsByType()
+end
+function ZoneMapWindow:HighlightRegionsByUserData()
+end
+function ZoneMapWindow:UnhighlightRegionsByUserData()
+end
+function ZoneMapWindow:HighlightRegionsByType()
+end
+function ZoneMapWindow:UnhighlightRegionsByType()
+end
+function ZoneMapWindow:HideObjectsByUserData()
+end
+function ZoneMapWindow:ShowObjectsByUserData()
+end
+function ZoneMapWindow:SetOverlayTypeInfo()
+end
+function ZoneMapWindow:IsShowingGhostWindow()
+end
+ActionBarButton = { }
+ActionBarButton.__index = ActionBarButton
+
+function ActionBarButton:SetContentId()
+end
+function ActionBarButton:AreButtonsLocked()
+end
+function ActionBarButton:LockButtons()
+end
+function ActionBarButton:DisableRemoval()
+end
+function ActionBarButton:GetContent()
+end
+function ActionBarButton:NextActionBar()
+end
+function ActionBarButton:PreviousActionBar()
+end
+function ActionBarButton:Enable()
+end
+LootWindow = { }
+LootWindow.__index = LootWindow
+
+function LootWindow:SetLootUnit()
+end
+function LootWindow:LootAll()
+end
+function LootWindow:SetBoxesPerRow()
+end
+function LootWindow:SetSquareSize()
+end
+function LootWindow:GetItemCount()
+end
+DragDropFrame = { }
+DragDropFrame.__index = DragDropFrame
+
+function DragDropFrame:GetFrameType()
+end
+IconButton = { }
+IconButton.__index = IconButton
+
+function IconButton:ClearInfo()
+end
+function IconButton:SetItemInfo()
+end
+function IconButton:SetReputationInfo()
+end
+function IconButton:SetMoneyInfo()
+end
+function IconButton:SetSpellInfo()
+end
+function IconButton:SetIcon()
+end
+function IconButton:SetStockCnt()
+end
+function IconButton:ShowBuyPrice()
+end
+function IconButton:ShowSellPrice()
+end
+function IconButton:ShowBuybackPrice()
+end
+function IconButton:SetXpInfo()
+end
+function IconButton:SetTradeSkillXpInfo()
+end
+function IconButton:SetTradeSkillInfo()
+end
+ProtostarMapWindow = { }
+ProtostarMapWindow.__index = ProtostarMapWindow
+
+function ProtostarMapWindow:IsShowLabelsOn()
+end
+function ProtostarMapWindow:SetZone()
+end
+function ProtostarMapWindow:ShowLabels()
+end
+function ProtostarMapWindow:GetZoneCount()
+end
+function ProtostarMapWindow:GetZoneInfo()
+end
+function ProtostarMapWindow:GetCurrentZoneIndex()
+end
+ComboBox = { }
+ComboBox.__index = ComboBox
+
+function ComboBox:AddItem()
+end
+function ComboBox:HasItem()
+end
+function ComboBox:GetButton()
+end
+function ComboBox:GetIndexFromData()
+end
+function ComboBox:GetDataFromIndex()
+end
+function ComboBox:GetGrid()
+end
+function ComboBox:GetRowCount()
+end
+function ComboBox:GetEditBox()
+end
+function ComboBox:SelectItemByIndex()
+end
+function ComboBox:SelectItemByText()
+end
+function ComboBox:SelectItemByData()
+end
+function ComboBox:Unselect()
+end
+function ComboBox:GetSelectedIndex()
+end
+function ComboBox:GetSelectedData()
+end
+function ComboBox:GetSelectedText()
+end
+function ComboBox:DeleteAll()
+end
+function ComboBox:SetCellTextColor()
+end
+Menu = { }
+Menu.__index = Menu
+
+function Menu:DoPopupMenu()
+end
+function Menu:EnableMenuItem()
+end
+function Menu:SetItemImage()
+end
+function Menu:SetWindowTemplate()
+end
+function Menu.new()
+    local self = setmetatable({}, Challenges)
+    return self
+end
+function Menu.is()
+end
+function Menu:__eq()
+end
+function Menu:__gc()
+end
+ModelWindow = { }
+ModelWindow.__index = ModelWindow
+
+function ModelWindow:SetCamera()
+end
+function ModelWindow:SetOverlay()
+end
+function ModelWindow:SetModel()
+end
+function ModelWindow:SetMask()
+end
+function ModelWindow:SetAnimated()
+end
+function ModelWindow:SetQuality()
+end
+function ModelWindow:SetFrame()
+end
+function ModelWindow:SetSpeed()
+end
+function ModelWindow:SetDecorInfo()
+end
+function ModelWindow:ToggleLeftSpin()
+end
+function ModelWindow:ToggleRightSpin()
+end
+function ModelWindow:ResetSpin()
+end
+Sprite = { }
+Sprite.__index = Sprite
+
+function Sprite:Draw()
+end
+function Sprite.is()
+end
+WindowLocation = { }
+WindowLocation.__index = WindowLocation
+
+function WindowLocation:SetPoint()
+end
+function WindowLocation:GetPoint()
+end
+function WindowLocation:SetOffset()
+end
+function WindowLocation:GetOffset()
+end
+function WindowLocation.ReadLocation()
+end
+function WindowLocation.new()
+    local self = setmetatable({}, Challenges)
+    return self
+end
+function WindowLocation:SetPoints()
+end
+function WindowLocation:GetPoints()
+end
+function WindowLocation:SetOffsets()
+end
+function WindowLocation:GetOffsets()
+end
+function WindowLocation:ToTable()
+end
+WorldFixedWindow = { }
+WorldFixedWindow.__index = WorldFixedWindow
+
+function WorldFixedWindow:SetUnit()
+end
+function WorldFixedWindow:SetWorldLocation()
+end
+function WorldFixedWindow:SetNowhere()
+end
+function WorldFixedWindow:IsOnScreen()
+end
+function WorldFixedWindow:GetUnit()
+end
+function WorldFixedWindow:IsOccluded()
+end
 ActionSetLib = { }
 
 function ActionSetLib.IsSlotUnlocked()
@@ -5150,6 +7562,51 @@ function MatchingGame.IsWarpartyQueued()
 end
 function MatchingGame.DoesRequestWarplotInit()
 end
+MatchingGame.MatchType = {
+    Battleground = 1,
+    Dungeon = 2,
+    Adventure = 3,
+    Arena = 4,
+    Warplot = 5,
+    RatedBattleground = 6,
+    OpenArena = 7
+}
+MatchingGame.PVPGameState = {
+    Preparation = 1,
+    InProgress = 2,
+    Finished = 3
+}
+MatchingGame.Team = {
+    Team1 = 1,
+    Team2 = 2
+}
+MatchingGame.Winner = {
+    Team1 = 1,
+    Team2 = 2,
+    Draw = 3
+}
+MatchingGame.MatchEndReason = {
+    Completed = 1,
+    Forfeit = 2,
+    TimeExpired = 3
+}
+MatchingGame.Rules = {
+    Default = 1,
+    DeathmatchPool = 2,
+    WaveRespawn = 3
+}
+MatchingGame.Roles = {
+    Tank = 1,
+    Healer = 2,
+    DPS = 3
+}
+MatchingGame.RatingType = {
+    Arena2v2 = 1,
+    Arena3v3 = 2,
+    Arena5v5 = 3,
+    RatedBattleground = 4,
+    Warplot = 1
+}
 function MatchingGame:GetMinLevel()
 end
 function MatchingGame:GetMaxLevel()
@@ -5172,6 +7629,12 @@ function MatchingGame.InitiateVoteToSurrender()
 end
 function MatchingGame.GetWarPlotBattleState()
 end
+MatchingGame.PvpDeathReason = {
+    KilledByPlayer = 1,
+    KilledByCreature = 2,
+    Falling = 3,
+    Drowning = 4
+}
 PathEpisode = { }
 PathEpisode.__index = PathEpisode
 
@@ -5358,6 +7821,13 @@ end
 function ApolloColor:__gc()
 end
 function ApolloColor:__index()
+end
+TickerWnd = { }
+TickerWnd.__index = TickerWnd
+
+function TickerWnd:AddTickerForm()
+end
+function TickerWnd:SetTickerSpeed()
 end
 MarketplaceLib = { }
 
@@ -5611,6 +8081,13 @@ function ItemAuction:__eq()
 end
 function ItemAuction:__gc()
 end
+ItemAuction.CodeEnumAuctionRemaining = {
+    Expiring = 1,
+    LessThanHour = 2,
+    Short = 3,
+    Long = 4,
+    Very_Long = 5
+}
 PetFlair = { }
 PetFlair.__index = PetFlair
 
@@ -5663,6 +8140,23 @@ function PetCustomization:__gc()
 end
 Guild = { }
 Guild.__index = Guild
+
+BuffContainerWindow = { }
+BuffContainerWindow.__index = BuffContainerWindow
+
+function BuffContainerWindow:SetUnit()
+end
+SendEmailButton = { }
+SendEmailButton.__index = SendEmailButton
+
+function SendEmailButton:SetMessageInfo()
+end
+function SendEmailButton:SetMessageAttachments()
+end
+function SendEmailButton:SetMessageGift()
+end
+TradeCommitButton = { }
+TradeCommitButton.__index = TradeCommitButton
 
 AccountItemLib = { }
 
@@ -6556,4 +9050,50 @@ end
 function GuildTypeLib:__gc()
 end
 function GuildTypeLib.is()
+end
+DialogSys = { }
+DialogSys.__index = DialogSys
+
+function DialogSys.GetState()
+end
+function DialogSys.GetResponses()
+end
+function DialogSys.End()
+end
+function DialogSys.GetViewableQuest()
+end
+function DialogSys.GetCommCreatureId()
+end
+function DialogSys.GetNPC()
+end
+function DialogSys.GetNPCText()
+end
+function DialogSys.GetResponseText()
+end
+function DialogSys.IsItemQuestGiver()
+end
+ActionConfirmButton = { }
+ActionConfirmButton.__index = ActionConfirmButton
+
+function ActionConfirmButton:SetActionData()
+end
+MannequinSlotWindow = { }
+MannequinSlotWindow.__index = MannequinSlotWindow
+
+function MannequinSlotWindow:GetItem()
+end
+function MannequinSlotWindow:SetContentId()
+end
+ApolloTimer = { }
+ApolloTimer.__index = ApolloTimer
+
+function ApolloTimer:Start()
+end
+function ApolloTimer:Stop()
+end
+function ApolloTimer:Set()
+end
+function ApolloTimer.is()
+end
+function ApolloTimer.Create()
 end

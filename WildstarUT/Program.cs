@@ -9,7 +9,7 @@ namespace WildstarUT
     using System.Xml;
     using System.Xml.Linq;
 
-    using NLua;
+    using LuaInterface;
 
     class Program
     {
@@ -19,11 +19,22 @@ namespace WildstarUT
             {
                 lua.DoFile("Apollo.lua");
 
-                var toc = XDocument.Load(Path.Combine(Environment.GetEnvironmentVariable("appdata"), @"NCSOFT\Wildstar\Addons\AuraMastery\toc.xml"));
+                var luaUnit = @"C:/git/luaunit";
+                var addonDir = "AuraMastery";
+                var addonPath = Path.Combine(Environment.GetEnvironmentVariable("appdata"), @"NCSOFT\Wildstar\Addons\" + addonDir + @"\");
+
+                lua.DoString(string.Format("package.path = package.path .. ';{0}/?.lua;{1}/?.lua'", luaUnit, addonPath.Replace('\\', '/')));
+                var toc = XDocument.Load(Path.Combine(addonPath, "toc.xml"));
                 foreach (var script in toc.Element("Addon").Elements("Script"))
                 {
-                    lua.DoFile(Path.Combine(Environment.GetEnvironmentVariable("appdata"), @"NCSOFT\Wildstar\Addons\AuraMastery\", script.Attribute("Name").Value));
+                    lua.DoFile(Path.Combine(addonPath, script.Attribute("Name").Value));
                 }
+
+                foreach (var testFiles in Directory.GetFiles(Path.Combine(addonPath, "Tests")))
+                {
+                    lua.DoFile(testFiles);
+                }
+                lua.DoString("require('luaunit'):run()");
                 Console.ReadLine();
             }
         }
