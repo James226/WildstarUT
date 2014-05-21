@@ -52,6 +52,7 @@
     <Compile Include="LuaObject.cs" />
     <Compile Include="LuaStore.cs" />
     <Compile Include="LuaStoreWriter.cs" />
+    <Compile Include="LuaWindowControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

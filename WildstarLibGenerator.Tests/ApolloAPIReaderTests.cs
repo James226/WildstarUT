@@ -140,5 +140,44 @@ namespace WildstarLibGenerator.Tests
             Assert.That(parseInput, Is.Not.Null);
             Assert.That(parseInput.GetParams().First(), Is.EqualTo("strInput"));
         }
+
+        [Test]
+        public void ShouldGenerateObjectStubForWindowControlElement()
+        {
+            var node = XElement.Parse(@"<WindowControl Name=""Window"" />");
+            apolloGen.ProcessWindowControl(node);
+
+            Assert.That(store["Window"], Is.Not.Null);
+        }
+
+        [Test]
+        public void ShouldGenerateMethodStubForMethodWithParametersWithinWindowControl()
+        {
+            this.store.AddWindowControl("Window");
+            var node = XElement.Parse(@"<Method Name=""FindChild"" Desc="""" Incomplete=""true"" Id=""307"">
+        <ReturnValue Type=""String"" Id=""308""/>
+        <Param Name=""strInput"" Type=""String"" Id=""309""/>
+    </Method>");
+            apolloGen.ProcessMethod(node, "Window");
+
+            var parseInput = this.store["Window"]["FindChild"] as LuaMethod;
+            Assert.That(parseInput, Is.Not.Null);
+            Assert.That(parseInput.GetParams().First(), Is.EqualTo("strInput"));
+        }
+
+        [Test]
+        public void ShouldGenerateFunctionStubForFunctionWithParametersWithinWindowControl()
+        {
+            this.store.AddWindowControl("Window");
+            var node = XElement.Parse(@"<Function Name=""Test"" Desc="""" Incomplete=""true"" Id=""307"">
+        <ReturnValue Type=""String"" Id=""308""/>
+        <Param Name=""strInput"" Type=""String"" Id=""309""/>
+    </Function>");
+            apolloGen.ProcessFunction(node, "Window");
+
+            var parseInput = this.store["Window"]["Test"] as LuaFunction;
+            Assert.That(parseInput, Is.Not.Null);
+            Assert.That(parseInput.GetParams().First(), Is.EqualTo("strInput"));
+        }
     }
 }

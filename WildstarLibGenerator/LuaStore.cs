@@ -76,5 +76,13 @@
                 parent.AddChild(new LuaMethod(methodName, parameters));
             }
         }
+
+        public void AddWindowControl(string windowName)
+        {
+            if (!this.objects.ContainsKey(windowName))
+            {
+                this.objects.Add(windowName, new LuaWindowControl(windowName));
+            }
+        }
     }
 }

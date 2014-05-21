@@ -106,6 +106,19 @@
         }
 
         [Test]
+        public void ShouldBeAbleToAddWindowControlToStore()
+        {
+            var luaStore = new LuaStore();
+            luaStore.AddWindowControl("Window");
+
+            var libraries = luaStore.GetAllChildren();
+
+            var luaObject = libraries.First();
+            Assert.That(luaObject.Name, Is.EqualTo("Window"));
+            Assert.That(luaObject.GetType(), Is.EqualTo(typeof(LuaWindowControl)));
+        }
+
+        [Test]
         public void ShouldBeAbleToAddMethodToStore()
         {
             var luaStore = new LuaStore();

@@ -27,6 +27,11 @@
             {
                 this.ProcessObject(obj);                
             }
+
+            foreach (var obj in element.Elements("WindowControl"))
+            {
+                this.ProcessWindowControl(obj);                
+            }
         }
 
         public void ProcessLibrary(XElement library)
@@ -69,11 +74,36 @@
             {
                 this.ProcessFunction(method, name);
             }
+
+            foreach (var function in obj.Elements("EnumSet"))
+            {
+                this.ProcessEnum(function, name);
+            }
         }
 
         public void ProcessMethod(XElement element, string obj)
         {
             this.output.AddMethod(obj, element.Attribute("Name").Value, element.Elements("Param").Select(param => param.Attribute("Name").Value));
+        }
+
+        public void ProcessWindowControl(XElement window)
+        {
+            var name = window.Attribute("Name").Value;
+            this.output.AddObject(name);
+
+            foreach (var method in window.Elements("Method"))
+            {
+                this.ProcessMethod(method, name);
+            }
+            foreach (var method in window.Elements("Function"))
+            {
+                this.ProcessFunction(method, name);
+            }
+
+            foreach (var function in window.Elements("EnumSet"))
+            {
+                this.ProcessEnum(function, name);
+            }
         }
     }
 }

@@ -125,5 +125,26 @@
 
             this.stream.Seek(0, SeekOrigin.Begin);
         }
+
+        [Test]
+        public void ShouldWriteWindowControlToStream()
+        {
+            this.luaStore.AddWindowControl("Window");
+            this.luaStoreWriter.Write(this.luaStore);
+
+            this.stream.Seek(0, SeekOrigin.Begin);
+            Assert.That(this.reader.ReadToEnd(), Is.EqualTo("Window = { }\nWindow.__index = Window\n\n"));
+        }
+
+        [Test]
+        public void ShouldWriteMethodWithParametersInWindowControlToStream()
+        {
+            this.luaStore.AddWindowControl("Window");
+            this.luaStore.AddMethod("Window", "FindChild", new[] { "name" });
+            this.luaStoreWriter.Write(this.luaStore);
+
+            this.stream.Seek(0, SeekOrigin.Begin);
+            Assert.That(this.reader.ReadToEnd(), Is.EqualTo("Window = { }\nWindow.__index = Window\n\nfunction Window:FindChild(name)\nend\n"));
+        }
     }
 }
