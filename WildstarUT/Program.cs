@@ -20,22 +20,30 @@ namespace WildstarUT
                 lua.DoFile("Apollo.lua");
 
                 var luaUnit = @"C:/git/luaunit";
-                var addonDir = "AuraMastery";
+                var addonDir = "TrackMaster";
                 var addonPath = Path.Combine(Environment.GetEnvironmentVariable("appdata"), @"NCSOFT\Wildstar\Addons\" + addonDir + @"\");
 
                 lua.DoString(string.Format("package.path = package.path .. ';{0}/?.lua;{1}/?.lua'", luaUnit, addonPath.Replace('\\', '/')));
                 var toc = XDocument.Load(Path.Combine(addonPath, "toc.xml"));
                 foreach (var script in toc.Element("Addon").Elements("Script"))
-                {
+                { 
                     lua.DoFile(Path.Combine(addonPath, script.Attribute("Name").Value));
                 }
 
                 foreach (var testFiles in Directory.GetFiles(Path.Combine(addonPath, "Tests")))
                 {
+                    Console.WriteLine("Loading File: " + testFiles);
                     lua.DoFile(testFiles);
                 }
-                lua.DoString("require('luaunit'):run()");
-                Console.ReadLine();
+                try
+                {
+                    lua.DoString("require('luaunit'):run()");
+                }
+                catch (LuaException ex)
+                {
+                    Console.WriteLine("Execution Error: " + ex.ToString());
+                }
+                //Console.ReadLine();
             }
         }
     }

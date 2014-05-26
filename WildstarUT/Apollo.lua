@@ -61,6 +61,7 @@ end
 function Apollo.GetTickCount()
 end
 function Apollo.RegisterAddon(nLuaEventHandler, strLoad, strSave, strRestore)
+    nLuaEventHandler:OnLoad()
 end
 function Apollo.SuspendAddon(nId)
 end
