@@ -8,7 +8,7 @@ namespace WildstarLibGenerator
     using System.IO;
     using System.Xml.Linq;
 
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
