@@ -81,12 +81,12 @@ end
 function Apollo.GetObjectSize()
 end
 function Apollo.LoadForm(strFile, strForm, wndParent, tLuaEventHandler)
-	if strForm == "Subwindows.ConfigPushButton" or strForm == "Subwindows.ConfigCheckButton" then
-		local form = setmetatable({}, { __index = Button })
-		return form
+	if wndParent == "InWorldHudStratum" then
+		return setmetatable({}, { __index = WorldFixedWindow })
+	elseif strForm == "Subwindows.ConfigPushButton" or strForm == "Subwindows.ConfigCheckButton" then
+		return setmetatable({}, { __index = Button })
 	else
-		local form = setmetatable({}, { __index = Window })
-		return form
+		return setmetatable({}, { __index = Window })
 	end
 end
 function Apollo.GetTextWidth()
@@ -149,7 +149,9 @@ end
 function Apollo.GetAPIVersion()
 end
 function Apollo.GetPackage(name)
-    return { tPackage = Apollo.__RegisteredPackages[name] }
+	if Apollo.__RegisteredPackages[name] ~= nil then
+		return { tPackage = Apollo.__RegisteredPackages[name] }
+	end
 end
 function Apollo.GetStrata()
 end
@@ -4375,7 +4377,6 @@ end
 function TalentPool.is()
 end
 Unit = { }
-Unit.__index = Unit
 
 function Unit:GetId()
 end
@@ -5691,6 +5692,7 @@ Vector3 = { }
 Vector3.__index = Vector3
 
 function Vector3:Length()
+	return math.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 end
 function Vector3:LengthSq()
 end
@@ -5698,8 +5700,11 @@ function Vector3:Normal()
 end
 function Vector3:NormalFast()
 end
-function Vector3.New()
-    local self = setmetatable({}, Challenges)
+function Vector3.New(x, y, z)
+    local self = setmetatable({}, Vector3)
+	self.x = x or 0;
+	self.y = y or 0;
+	self.z = z or 0;
     return self
 end
 function Vector3.Is()
@@ -5738,17 +5743,23 @@ function Vector3:__eq()
 end
 function Vector3:__tostring()
 end
-function Vector3:__add()
+function Vector3:__add(other)
+	if type(other) == "number" then
+		return Vector3.New(self.x + other, self.y + other, self.z + other)
+	else
+		return Vector3.New(self.x + other.x, self.y + other.y, self.z + other.z)
+	end
 end
 function Vector3:__div()
 end
 function Vector3:__mul()
 end
-function Vector3:__sub()
-end
-function Vector3:__index()
-end
-function Vector3:__newindex()
+function Vector3:__sub(other)
+	if type(other) == "number" then
+		return Vector3.New(self.x - other, self.y - other, self.z - other)
+	else
+		return Vector3.New(self.x - other.x, self.y - other.y, self.z - other.z)
+	end
 end
 AaRect = { }
 AaRect.__index = AaRect
@@ -7320,7 +7331,7 @@ end
 function WindowLocation:ToTable()
 end
 WorldFixedWindow = { }
-WorldFixedWindow.__index = WorldFixedWindow
+setmetatable(WorldFixedWindow, { __index = Window })
 
 function WorldFixedWindow:SetUnit()
 end

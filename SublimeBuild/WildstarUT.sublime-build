@@ -1,0 +1,5 @@
+{
+	"cmd": ["WildstarUT", "$file_path"],
+	"path": "C:/git/WildstarUT/WildstarUT/bin/Debug",
+	"working_dir": "C:/git/WildstarUT/WildstarUT/bin/Debug"
+}
